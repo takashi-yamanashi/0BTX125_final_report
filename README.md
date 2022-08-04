@@ -9,75 +9,76 @@ I used STAR and featureCounts to map the fastq data to the reference genome and 
 Finally, after performing the same qc and data processing as in the paper, I created a figure equivalent to the results shown in the paper.
 (In  this step, I used scanpy platform)
 
-* This repository is open until 8/31.
+* This repository is open until 8/31.  
 
 
 
 # Setup
-### Reference genome download 
-source : https://support.illumina.com/sequencing/sequencing_software/igenome.html
-$ wget http://igenomes.illumina.com.s3-website-us-east-1.amazonaws.com/Mus_musculus/UCSC/mm10/Mus_musculus_UCSC_mm10.tar.gz
-$ tar xvf Mus_musculus_UCSC_mm10.tar.gz
+### Reference genome download   
+source : https://support.illumina.com/sequencing/sequencing_software/igenome.html  
+
+$ wget http://igenomes.illumina.com.s3-website-us-east-1.amazonaws.com/Mus_musculus/UCSC/mm10/Mus_musculus_UCSC_mm10.tar.gz  
+$ tar xvf Mus_musculus_UCSC_mm10.tar.gz  
 
 
 ### STAR 2.7.10a install 
-source : https://github.com/alexdobin/STAR
+source : https://github.com/alexdobin/STAR  
 
-Make index (Please fix to your environment)
-$ ~/opt/STAR-2.7.10a/source/STAR \
---runThreadN 30 \
---runMode genomeGenerate \
---genomeDir ~/opt/ref_genome/STAR_ref/UCSC_mm10 \
---genomeFastaFiles ~/opt/ref_genome/STAR_ref/Mus_musculus/UCSC/mm10/Sequence/WholeGenomeFasta/genome.fa \
---sjdbGTFfile ~/opt/ref/ref_genome/STAR_ref/Mus_musculus/UCSC/mm10/Annotation/Genes/genes.gtf 
+Make index (Please fix to your environment)  
+$ ~/opt/STAR-2.7.10a/source/STAR \  
+--runThreadN 30 \  
+--runMode genomeGenerate \  
+--genomeDir ~/opt/ref_genome/STAR_ref/UCSC_mm10 \  
+--genomeFastaFiles ~/opt/ref_genome/STAR_ref/Mus_musculus/UCSC/mm10/Sequence/WholeGenomeFasta/genome.fa \  
+--sjdbGTFfile ~/opt/ref/ref_genome/STAR_ref/Mus_musculus/UCSC/mm10/Annotation/Genes/genes.gtf   
 
 
 ----------Quick start----------
 ### code clone
-$ git clone git@github.com:takashi-yamanashi/0BTX125_final_report.git ~/final_report
+$ git clone git@github.com:takashi-yamanashi/0BTX125_final_report.git ~/final_report  
 
 
-### subread install (2.0.3, 15 July 2021)
-$ sudo apt install subread
+### subread install (2.0.3, 15 July 2021)  
+$ sudo apt install subread  
 
 
-### pyenv install (if you need)
-$ git clone git://github.com/yyuu/pyenv.git ~/.pyenv  
-$ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile  
-$ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile  
-$ echo 'eval "$(pyenv init --path)"' >> ~/.bash_profile  
-$ source ~/.bash_profile
+### pyenv install (if you need)  
+$ git clone git://github.com/yyuu/pyenv.git ~/.pyenv    
+$ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile    
+$ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile    
+$ echo 'eval "$(pyenv init --path)"' >> ~/.bash_profile    
+$ source ~/.bash_profile  
 
 
 ### pyenv setup
-$ pyenv install 3.8.5  
-$ cd ~/final_report
-$ pyenv local 3.8.5  
+$ pyenv install 3.8.5    
+$ cd ~/final_report  
+$ pyenv local 3.8.5   
 
 
 ### poetry install
-$ pip3 install poetry
-$ poetry config virtualenvs.in-project true
+$ pip3 install poetry  
+$ poetry config virtualenvs.in-project true  
 
 ### package install
 $ poetry install  
 
 
 ### Raw Data Download (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE59114)
-$ mkdir -p data/raw
+$ mkdir -p data/raw  
 $ bash data_download.sh SraRunTable.csv
 
 
 
 # Run
-## Mapping
-STAR and featureCounts(Rsubread)
+## Mapping  
+STAR and featureCounts(Rsubread)  
 $ bash mapping.sh
 
 
 ----------Quick start----------
 ## Analysis
-$ poetry run jupyter lab
+$ poetry run jupyter lab  
 
-run data_qc.ipynb
+run data_qc.ipynb  
 run make_fig.ipynb
