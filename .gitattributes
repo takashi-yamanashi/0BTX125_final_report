@@ -2,3 +2,4 @@ base.h5ad filter=lfs diff=lfs merge=lfs -text
 cut_gene.h5ad filter=lfs diff=lfs merge=lfs -text
 all_counts.txt filter=lfs diff=lfs merge=lfs -text
 all_Multi-overlapping_counts.txt filter=lfs diff=lfs merge=lfs -text
+GSM1642239_Aligned.sortedByCoord.out.bam filter=lfs diff=lfs merge=lfs -text
