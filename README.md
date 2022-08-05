@@ -64,7 +64,8 @@ $ poetry config virtualenvs.in-project true
 $ poetry install  
 
 
-### Raw Data Download (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE59114)
+### Raw Data Download
+source : https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE59114  
 $ mkdir -p data/raw  
 $ bash data_download.sh SraRunTable.csv
 
